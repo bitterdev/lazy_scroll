@@ -8,7 +8,7 @@ use Concrete\Core\Support\Facade\Application;
 use Concrete\Core\Validation\CSRF\Token;
 use Concrete\Core\View\View;
 
-/** @var array $pageRedirects */
+/** @var int $scrollDuration */
 
 $app = Application::getFacadeApplication();
 /** @var Form $form */
@@ -25,7 +25,7 @@ $token = $app->make(Token::class);
     View::element("dashboard/help", [], "lazy_scroll"); ?>
 </div>
 
-<form action="#" method="post">´
+<form action="#" method="post">
     <?php echo $token->output("update_settings"); ?>
 
     <fieldset>
@@ -33,6 +33,17 @@ $token = $app->make(Token::class);
             <?php echo t("General"); ?>
         </legend>
 
+        <div class="form-group">
+            <?php echo $form->label("scrollDuration", t("Scroll Duration")); ?>
+
+            <div class="input-group">
+                <?php echo $form->number("scrollDuration", $scrollDuration, ["min" => 0, "step" => 1, "max" => 30000]); ?>
+
+                <div class="input-group-text">
+                    <?php echo t("ms"); ?>
+                </div>
+            </div>
+        </div>
     </fieldset>
 
     <div class="ccm-dashboard-form-actions-wrapper">

@@ -28,7 +28,7 @@ class LazyScroll extends DashboardSitePageController
             $this->formValidator->addRequiredToken("update_settings");
 
             if ($this->formValidator->test()) {
-                $this->config->save("lazy_scroll.page_redirects", $this->request->request->get("pageRedirects"));
+                $this->config->save("lazy_scroll.scroll_duration", (int)$this->request->request->get("scrollDuration"));
 
                 if (!$this->error->has()) {
                     $this->set("success", t("The settings has been successfully updated."));
@@ -43,6 +43,6 @@ class LazyScroll extends DashboardSitePageController
             }
         }
 
-        $this->set("pageRedirects", $this->config->get("lazy_scroll.page_redirects", []));
+        $this->set("scrollDuration", (int)$this->config->get("lazy_scroll.scroll_duration", 1200));
     }
 }

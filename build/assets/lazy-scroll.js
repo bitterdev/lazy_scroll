@@ -2,16 +2,31 @@ import Lenis from '@studio-freight/lenis';
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-document.addEventListener("DOMContentLoaded", function () {
-    gsap.registerPlugin(ScrollTrigger);
+(function ($) {
+    $.fn.initSmoothScroll = function (options) {
+        const settings = $.extend({
+            scrollDuration: 1200
+        }, options);
 
-    let lenis = new Lenis();
+        if (CCM_EDIT_MODE) {
+            return;
+        }
 
-    lenis.on("scroll", ScrollTrigger.update);
+        gsap.registerPlugin(ScrollTrigger);
 
-    gsap.ticker.add((time) => {
-        lenis.raf(time * 700);
-    });
+        const lenis = new Lenis({
+            duration: settings.scrollDuration / 1000000,
+            smooth: true,
+            smoothWheel: true,
+            smoothTouch: true,
+        });
 
-    gsap.ticker.lagSmoothing(0);
-});
+        lenis.on("scroll", ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+    };
+})(jQuery);
