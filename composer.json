@@ -1,0 +1,10 @@
+{
+  "name": "bitter/lazy_scroll",
+  "type": "concrete5-package",
+  "description": "Lazy Scroll is a Concrete CMS extension that brings ultra-smooth, modern scrolling animations to your website with One-Click-Installation.",
+  "autoload": {
+    "psr-4": {
+      "Bitter\\LazyScroll\\": "src/Bitter/LazyScroll"
+    }
+  }
+}

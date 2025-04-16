@@ -1,0 +1,3 @@
+# Lazy Scroll 
+
+Lazy Scroll is a simple and lightweight extension for Concrete CMS that adds smooth scrolling to your website. It makes the scroll behavior feel modern and fluid, so users have a more pleasant experience when moving through your pages. There's no complicated setup – just install it and your site scrolls smoothly from top to bottom. It's perfect for giving your site that little extra polish without slowing things down.
