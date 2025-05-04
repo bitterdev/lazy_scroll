@@ -25,6 +25,8 @@ $token = $app->make(Token::class);
     View::element("dashboard/help", [], "lazy_scroll"); ?>
 </div>
 
+<?php \Concrete\Core\View\View::element("dashboard/did_you_know", [], "lazy_scroll"); ?>
+
 <form action="#" method="post">
     <?php echo $token->output("update_settings"); ?>
 
